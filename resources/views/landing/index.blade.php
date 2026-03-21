@@ -8,12 +8,14 @@
     <title>Grupo Are</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/instalaciones.css">
-    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/instalaciones.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -26,7 +28,7 @@
         <div class="container">
             <nav class="navbar-custom">
                 <a href="{{ route('landing.home') }}" class="navbar-brand">
-                    <img src="images/logo.png" alt="Grupo Are">
+                    <img src="{{ asset('images/logo.png') }}" alt="Grupo Are">
                 </a>
 
                 <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
@@ -70,17 +72,17 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-6">
-                        <div class="about-three__left wow slideInLeft" data-wow-delay="100ms"
+                        <div class="about-three__left wow slideInLeft" data-animate="slide-left" data-wow-delay="100ms"
                             data-wow-duration="2500ms">
                             <div class="about-three__img-box">
                                 <div class="about-three__img">
-                                    <img src="images/about-three-img-1.png" alt="">
+                                    <img src="{{ asset('images/about-three-img-1.png') }}" alt="">
                                 </div>
                                 <div class="about-three__img-two">
-                                    <img src="images/about-three-img-2.png" alt="">
+                                    <img src="{{ asset('images/about-three-img-2.png') }}" alt="">
                                 </div>
                                 <div class="about-three__img-three">
-                                    <img src="images/about-three-img-3.png" alt="">
+                                    <img src="{{ asset('images/about-three-img-3.png') }}" alt="">
                                 </div>
                                 <div class="about-three__experience-box">
                                     <div class="about-three__experience-count">
@@ -93,13 +95,13 @@
                         </div>
                     </div>
                     <div class="col-xl-6">
-                        <div class="about-three__right">
+                        <div class="about-three__right" data-animate="slide-right">
                             <div class="section-title text-left sec-title-animation animation-style2">
                                 <div class="section-title__tagline-box">
                                     <span class="icon-pharmacy"><i class="fa-solid fa-house"></i></span>
                                     <p class="section-title__tagline">Sobre Grupo Are</p>
                                 </div>
-                                <h2 class="section-title__title title-animation">Más de 25 años impulsando el
+                                <h2 class="section-title__title title-animation split-text">Más de 25 años impulsando el
                                     <span>sector bufalero</span>
                                 </h2>
                             </div>
@@ -174,15 +176,15 @@
                         <span class="icon-pharmacy"></span>
                         <p class="section-title__tagline">Nuestras Instalaciones</p>
                     </div>
-                    <h2 class="section-title__title title-animation">Infraestructura para una producción eficiente y sostenible</h2>
+                    <h2 class="section-title__title title-animation split-text">Infraestructura para una producción eficiente y sostenible</h2>
                 </div>
-                <ul class="row">
+                <ul class="row" data-stagger>
                     <!--Process Two Single Start -->
                     <li class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp animated" data-wow-delay="100ms" style="visibility: visible; animation-delay: 100ms; animation-name: fadeInUp;">
                         <div class="process-two__single">
                             <div class="process-two__img-box">
                                 <div class="process-two__img">
-                                    <img src="images/process-two-1-1.png" alt="">
+                                    <img src="{{ asset('images/process-two-1-1.png') }}" alt="">
                                 </div>
                                 <div class="process-two__count"></div>
                             </div>
@@ -199,7 +201,7 @@
                         <div class="process-two__single">
                             <div class="process-two__img-box">
                                 <div class="process-two__img">
-                                    <img src="images/process-two-1-2.png" alt="">
+                                    <img src="{{ asset('images/process-two-1-2.png') }}" alt="">
                                 </div>
                                 <div class="process-two__count"></div>
                             </div>
@@ -216,7 +218,7 @@
                         <div class="process-two__single">
                             <div class="process-two__img-box">
                                 <div class="process-two__img">
-                                    <img src="images/process-two-1-3.png" alt="">
+                                    <img src="{{ asset('images/process-two-1-3.png') }}" alt="">
                                 </div>
                                 <div class="process-two__count"></div>
                             </div>
@@ -233,7 +235,7 @@
                         <div class="process-two__single">
                             <div class="process-two__img-box">
                                 <div class="process-two__img">
-                                    <img src="images/process-two-1-4.png" alt="">
+                                    <img src="{{ asset('images/process-two-1-4.png') }}" alt="">
                                 </div>
                                 <div class="process-two__count"></div>
                             </div>
@@ -256,10 +258,10 @@
                         <span class="icon-pharmacy"><i class="fa-solid fa-tag"></i></span>
                         <p class="section-title__tagline">Ventas</p>
                     </div>
-                    <h2 class="section-title__title title-animation">Búfalas disponibles para venta</h2>
+                    <h2 class="section-title__title title-animation split-text">Búfalas disponibles para venta</h2>
                 </div>
 
-                <div class="row g-4">
+                <div class="row g-4" data-stagger>
                     @forelse($sales as $sale)
                         @php
                             $photo = $sale->photo_path ? asset('storage/' . $sale->photo_path) : asset('images/mediterranea.jpg');
@@ -380,7 +382,7 @@
                         </div>
                     </div>
                     <div class="appointment-two__img wow slideInLeft animated" data-wow-delay="100ms" data-wow-duration="2500ms" style="visibility: visible; animation-duration: 2500ms; animation-delay: 100ms; animation-name: slideInLeft;">
-                        <img src="images/contac.jpg" alt="">
+                        <img src="{{ asset('images/contac.jpg') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -391,7 +393,7 @@
                 <div class="row g-4 align-items-start">
                     <div class="col-lg-4 col-md-6">
                         <div class="footer-brand">
-                            <img src="images/logo.png" alt="Grupo Are" class="footer-logo">
+                            <img src="{{ asset('images/logo.png') }}" alt="Grupo Are" class="footer-logo">
                             <p>
                                 Más de 25 años impulsando el sector bufalero con visión moderna,
                                 calidad productiva y compromiso sostenible.
@@ -439,6 +441,7 @@
             navmenu.classList.toggle('active');
         });
     </script>
+    <script src="{{ asset('js/animations.js') }}"></script>
 
 </body>
 

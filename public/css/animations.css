@@ -1,0 +1,218 @@
+/* ============================================================
+   GRUPO ARE — Scroll & Split-Text Animations
+   Pure CSS + IntersectionObserver (no external libs)
+   ============================================================ */
+
+/* ---------- base: hidden before observed ---------- */
+[data-animate] {
+    opacity: 0;
+    will-change: opacity, transform;
+    transition:
+        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-animate].is-visible {
+    opacity: 1;
+    transform: none !important;
+}
+
+/* ---------- individual presets ---------- */
+
+/* fade up */
+[data-animate="fade-up"] {
+    transform: translateY(40px);
+}
+
+/* fade down */
+[data-animate="fade-down"] {
+    transform: translateY(-40px);
+}
+
+/* slide from left */
+[data-animate="slide-left"] {
+    transform: translateX(-60px);
+}
+
+/* slide from right */
+[data-animate="slide-right"] {
+    transform: translateX(60px);
+}
+
+/* scale in */
+[data-animate="scale-in"] {
+    transform: scale(0.88);
+}
+
+/* zoom rotate */
+[data-animate="zoom-rotate"] {
+    transform: scale(0.85) rotate(-3deg);
+}
+
+/* fade only */
+[data-animate="fade"] {
+    transform: none;
+}
+
+/* ---------- stagger children (cards, lists, grids) ---------- */
+[data-stagger] > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-stagger].is-visible > *:nth-child(1)  { transition-delay: 0.05s; }
+[data-stagger].is-visible > *:nth-child(2)  { transition-delay: 0.12s; }
+[data-stagger].is-visible > *:nth-child(3)  { transition-delay: 0.19s; }
+[data-stagger].is-visible > *:nth-child(4)  { transition-delay: 0.26s; }
+[data-stagger].is-visible > *:nth-child(5)  { transition-delay: 0.33s; }
+[data-stagger].is-visible > *:nth-child(6)  { transition-delay: 0.40s; }
+[data-stagger].is-visible > *:nth-child(7)  { transition-delay: 0.47s; }
+[data-stagger].is-visible > *:nth-child(8)  { transition-delay: 0.54s; }
+[data-stagger].is-visible > *:nth-child(9)  { transition-delay: 0.61s; }
+[data-stagger].is-visible > *:nth-child(10) { transition-delay: 0.68s; }
+[data-stagger].is-visible > *:nth-child(11) { transition-delay: 0.75s; }
+[data-stagger].is-visible > *:nth-child(12) { transition-delay: 0.82s; }
+
+[data-stagger].is-visible > * {
+    opacity: 1;
+    transform: none;
+}
+
+/* ---------- split-text reveal ---------- */
+.split-text .word {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    margin-right: 0.25em;
+}
+
+.split-text .word-inner {
+    display: inline-block;
+    transform: translateY(105%);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.split-text.is-visible .word-inner {
+    transform: translateY(0);
+}
+
+/* stagger each word */
+.split-text.is-visible .word:nth-child(1) .word-inner  { transition-delay: 0.04s; }
+.split-text.is-visible .word:nth-child(2) .word-inner  { transition-delay: 0.08s; }
+.split-text.is-visible .word:nth-child(3) .word-inner  { transition-delay: 0.12s; }
+.split-text.is-visible .word:nth-child(4) .word-inner  { transition-delay: 0.16s; }
+.split-text.is-visible .word:nth-child(5) .word-inner  { transition-delay: 0.20s; }
+.split-text.is-visible .word:nth-child(6) .word-inner  { transition-delay: 0.24s; }
+.split-text.is-visible .word:nth-child(7) .word-inner  { transition-delay: 0.28s; }
+.split-text.is-visible .word:nth-child(8) .word-inner  { transition-delay: 0.32s; }
+.split-text.is-visible .word:nth-child(9) .word-inner  { transition-delay: 0.36s; }
+.split-text.is-visible .word:nth-child(10) .word-inner { transition-delay: 0.40s; }
+.split-text.is-visible .word:nth-child(11) .word-inner { transition-delay: 0.44s; }
+.split-text.is-visible .word:nth-child(12) .word-inner { transition-delay: 0.48s; }
+.split-text.is-visible .word:nth-child(13) .word-inner { transition-delay: 0.52s; }
+.split-text.is-visible .word:nth-child(14) .word-inner { transition-delay: 0.56s; }
+.split-text.is-visible .word:nth-child(15) .word-inner { transition-delay: 0.60s; }
+
+/* ---------- hero-specific entrance ---------- */
+.hero-content .sub-heading {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s 0.1s ease, transform 0.6s 0.1s ease;
+}
+
+.hero-content .heading {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s 0.25s ease, transform 0.7s 0.25s ease;
+}
+
+.hero-content .desc {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s 0.45s ease, transform 0.6s 0.45s ease;
+}
+
+.hero-content .default-btn {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s 0.6s ease, transform 0.5s 0.6s ease;
+}
+
+.hero-content.is-visible .sub-heading,
+.hero-content.is-visible .heading,
+.hero-content.is-visible .desc,
+.hero-content.is-visible .default-btn {
+    opacity: 1;
+    transform: none;
+}
+
+/* ---------- timeline items alternate ---------- */
+.about-timeline__item {
+    opacity: 0;
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.about-timeline__item--left {
+    transform: translateX(-50px);
+}
+
+.about-timeline__item--right {
+    transform: translateX(50px);
+}
+
+.about-timeline__item.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ---------- counter animation ---------- */
+.about-three__experience-box {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.6s 0.3s ease, transform 0.6s 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.about-three__experience-box.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ---------- footer reveal ---------- */
+.site-footer {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.site-footer.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ---------- delay utility classes ---------- */
+[data-delay="100"] { transition-delay: 0.1s !important; }
+[data-delay="200"] { transition-delay: 0.2s !important; }
+[data-delay="300"] { transition-delay: 0.3s !important; }
+[data-delay="400"] { transition-delay: 0.4s !important; }
+[data-delay="500"] { transition-delay: 0.5s !important; }
+
+/* ---------- prefers-reduced-motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    [data-animate],
+    [data-stagger] > *,
+    .split-text .word-inner,
+    .hero-content .sub-heading,
+    .hero-content .heading,
+    .hero-content .desc,
+    .hero-content .default-btn,
+    .about-timeline__item,
+    .about-three__experience-box,
+    .site-footer {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}

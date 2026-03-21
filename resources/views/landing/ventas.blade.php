@@ -8,12 +8,14 @@
 	<title>Grupo Are | Ventas</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
 
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/main.css">
-	<link rel="stylesheet" href="css/about.css">
-	<link rel="stylesheet" href="css/responsive.css">
-	<link rel="stylesheet" href="css/instalaciones.css">
-	<link rel="stylesheet" href="css/contact.css">
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/about.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/instalaciones.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+
+	<link rel="stylesheet" href="{{ asset('css/animations.css') }}">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 		crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -25,7 +27,7 @@
 		<div class="container">
 			<nav class="navbar-custom">
 				<a href="{{ route('landing.home') }}" class="navbar-brand">
-					<img src="images/logo.png" alt="Grupo Are">
+					<img src="{{ asset('images/logo.png') }}" alt="Grupo Are">
 				</a>
 
 				<button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
@@ -70,10 +72,10 @@
 					<span class="icon-pharmacy"><i class="fa-solid fa-tag"></i></span>
 					<p class="section-title__tagline">Ventas</p>
 				</div>
-				<h2 class="section-title__title title-animation">Búfalas disponibles para venta</h2>
+				<h2 class="section-title__title title-animation split-text">Búfalas disponibles para venta</h2>
 			</div>
 
-			<div class="row g-4">
+			<div class="row g-4" data-stagger>
 				@forelse($sales as $sale)
 					@php
 						$photo = $sale->photo_path ? asset('storage/' . $sale->photo_path) : asset('images/mediterranea.jpg');
@@ -150,7 +152,7 @@
 			<div class="row g-4 align-items-start">
 				<div class="col-lg-4 col-md-6">
 					<div class="footer-brand">
-						<img src="images/logo.png" alt="Grupo Are" class="footer-logo">
+						<img src="{{ asset('images/logo.png') }}" alt="Grupo Are" class="footer-logo">
 						<p>
 							Más de 25 años impulsando el sector bufalero con visión moderna,
 							calidad productiva y compromiso sostenible.
@@ -305,6 +307,7 @@
 			if (e.key === 'Escape') closeSaleDetail();
 		});
 	</script>
+	<script src="{{ asset('js/animations.js') }}"></script>
 
 </body>
 

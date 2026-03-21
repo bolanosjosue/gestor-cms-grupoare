@@ -8,12 +8,14 @@
     <title>Grupo Are | Contacto</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/blog.css">
-    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/blog.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -25,7 +27,7 @@
         <div class="container">
             <nav class="navbar-custom">
                 <a href="{{ route('landing.home') }}" class="navbar-brand">
-                    <img src="images/logo.png" alt="Grupo Are">
+                    <img src="{{ asset('images/logo.png') }}" alt="Grupo Are">
                 </a>
 
                 <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
@@ -64,11 +66,11 @@
     </section>
 
     <!-- Quick Contact One Start -->
-    <div class="quick-contact-one">
+    <div class="quick-contact-one" data-animate="fade-up">
         <div class="container">
             <div class="row">
                 <div class="col-xl-4 col-lg-5">
-                    <ul class="quick-contact-one__inner clearfix list-unstyled">
+                    <ul class="quick-contact-one__inner clearfix list-unstyled" data-stagger>
                         <li class="quick-contact-one__single">
                             <div class="quick-contact-one__single-icon">
                                 <i class="fa-solid fa-phone"></i>
@@ -187,7 +189,7 @@
 
 
     <!-- Main Contact Form Start -->
-    <section id="contacto-formulario" class="main-contact-form">
+    <section id="contacto-formulario" class="main-contact-form" data-animate="fade-up">
         <div class="container">
             <div class="main-contact-form__inner">
                 <div class="section-title text-center sec-title-animation animation-style1">
@@ -195,7 +197,7 @@
                         <span class="icon-tooth"><i class="fa-solid fa-comments"></i></span>
                         <p class="section-title__tagline">Formulario de contacto</p>
                     </div>
-                    <h2 class="section-title__title title-animation">
+                    <h2 class="section-title__title title-animation split-text">
                         Envíanos un <span>mensaje</span>
                     </h2>
                 </div>
@@ -259,7 +261,7 @@
             <div class="row g-4 align-items-start">
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-brand">
-                        <img src="images/logo.png" alt="Grupo Are" class="footer-logo">
+                        <img src="{{ asset('images/logo.png') }}" alt="Grupo Are" class="footer-logo">
                         <p>
                             Más de 25 años impulsando el sector bufalero con visión moderna,
                             calidad productiva y compromiso sostenible.
@@ -307,6 +309,7 @@
             navmenu.classList.toggle('active');
         });
     </script>
+    <script src="{{ asset('js/animations.js') }}"></script>
 
 </body>
 

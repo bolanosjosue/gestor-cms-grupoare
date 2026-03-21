@@ -8,11 +8,13 @@
     <title>Grupo Are | Nosotros</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/about-timeline.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/about-timeline.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -23,7 +25,7 @@
         <div class="container">
             <nav class="navbar-custom">
                 <a href="{{ route('landing.home') }}" class="navbar-brand">
-                    <img src="images/logo.png" alt="Grupo Are">
+                    <img src="{{ asset('images/logo.png') }}" alt="Grupo Are">
                 </a>
 
                 <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
@@ -63,16 +65,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-6">
-                    <div class="about-three__left wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
+                    <div class="about-three__left wow slideInLeft" data-animate="slide-left" data-wow-delay="100ms" data-wow-duration="2500ms">
                         <div class="about-three__img-box">
                             <div class="about-three__img">
-                                <img src="images/about-three-img-1.png" alt="">
+                                <img src="{{ asset('images/about-three-img-1.png') }}" alt="">
                             </div>
                             <div class="about-three__img-two">
-                                <img src="images/about-three-img-2.png" alt="">
+                                <img src="{{ asset('images/about-three-img-2.png') }}" alt="">
                             </div>
                             <div class="about-three__img-three">
-                                <img src="images/about-three-img-3.png" alt="">
+                                <img src="{{ asset('images/about-three-img-3.png') }}" alt="">
                             </div>
                             <div class="about-three__experience-box">
                                 <div class="about-three__experience-count">
@@ -85,13 +87,13 @@
                     </div>
                 </div>
                 <div class="col-xl-6">
-                    <div class="about-three__right">
+                    <div class="about-three__right" data-animate="slide-right">
                         <div class="section-title text-left sec-title-animation animation-style2">
                             <div class="section-title__tagline-box">
                                 <span class="icon-pharmacy"><i class="fa-solid fa-house"></i></span>
                                 <p class="section-title__tagline">Sobre Grupo Are</p>
                             </div>
-                            <h2 class="section-title__title title-animation">Más de 25 años impulsando el
+                            <h2 class="section-title__title title-animation split-text">Más de 25 años impulsando el
                                 <span>sector bufalero</span>
                             </h2>
                         </div>
@@ -161,7 +163,7 @@
                     <span class="icon-pharmacy"><i class="fa-solid fa-clock-rotate-left"></i></span>
                     <p class="section-title__tagline">Nuestra Historia</p>
                 </div>
-                <h2 class="section-title__title title-animation">Evolución de Grupo Are en el sector bufalero</h2>
+                <h2 class="section-title__title title-animation split-text">Evolución de Grupo Are en el sector bufalero</h2>
             </div>
 
             <div class="about-timeline__track">
@@ -169,7 +171,7 @@
                     <span class="about-timeline__year">2001</span>
                     <div class="about-timeline__card">
                         <div class="about-timeline__media">
-                            <img src="images/history-1.png" alt="Inicio de Grupo Are en 2001">
+                            <img src="{{ asset('images/history-1.png') }}" alt="Inicio de Grupo Are en 2001">
                         </div>
                         <h3>Inicio del proyecto</h3>
                         <p>Comenzamos con una visión clara: desarrollar una operación bufalera sólida, técnica y
@@ -181,7 +183,7 @@
                     <span class="about-timeline__year">2008</span>
                     <div class="about-timeline__card">
                         <div class="about-timeline__media">
-                            <img src="images/history-2.png" alt="Mejoras productivas en 2008">
+                            <img src="{{ asset('images/history-2.png') }}" alt="Mejoras productivas en 2008">
                         </div>
                         <h3>Mejoras productivas</h3>
                         <p>Implementamos prácticas de manejo y control que elevaron la calidad de nuestros procesos.</p>
@@ -192,7 +194,7 @@
                     <span class="about-timeline__year">2015</span>
                     <div class="about-timeline__card">
                         <div class="about-timeline__media">
-                            <img src="images/history-3.png" alt="Infraestructura moderna en 2015">
+                            <img src="{{ asset('images/history-3.png') }}" alt="Infraestructura moderna en 2015">
                         </div>
                         <h3>Infraestructura moderna</h3>
                         <p>Fortalecimos establos, pastoreo y sistemas hídricos para optimizar bienestar y rendimiento.
@@ -204,7 +206,7 @@
                     <span class="about-timeline__year">2020</span>
                     <div class="about-timeline__card">
                         <div class="about-timeline__media">
-                            <img src="images/history-4.png" alt="Consolidación comercial en 2020">
+                            <img src="{{ asset('images/history-4.png') }}" alt="Consolidación comercial en 2020">
                         </div>
                         <h3>Consolidación comercial</h3>
                         <p>Expandimos nuestras líneas de comercialización, manteniendo trazabilidad y estándares de
@@ -217,7 +219,7 @@
                     <div class="about-timeline__card">
                         <div class="about-timeline__media">
                             <video autoplay muted loop playsinline>
-                                <source src="images/history-5.mp4" type="video/mp4">
+                                <source src="{{ asset('images/history-5.mp4') }}" type="video/mp4">
                                 Tu navegador no soporta video.
                             </video>
                         </div>
@@ -235,7 +237,7 @@
             <div class="row g-4 align-items-start">
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-brand">
-                        <img src="images/logo.png" alt="Grupo Are" class="footer-logo">
+                        <img src="{{ asset('images/logo.png') }}" alt="Grupo Are" class="footer-logo">
                         <p>
                             Más de 25 años impulsando el sector bufalero con visión moderna,
                             calidad productiva y compromiso sostenible.
@@ -278,6 +280,7 @@
             navmenu.classList.toggle('active');
         });
     </script>
+    <script src="{{ asset('js/animations.js') }}"></script>
 </body>
 
 </html>

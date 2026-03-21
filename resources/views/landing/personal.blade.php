@@ -8,11 +8,13 @@
     <title>Grupo Are | Personal</title>
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo.png') }}">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/personal.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/personal.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/animations.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -23,7 +25,7 @@
         <div class="container">
             <nav class="navbar-custom">
                 <a href="{{ route('landing.home') }}" class="navbar-brand">
-                    <img src="images/logo.png" alt="Grupo Are">
+                    <img src="{{ asset('images/logo.png') }}" alt="Grupo Are">
                 </a>
 
                 <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
@@ -67,10 +69,10 @@
                     <span class="icon-pharmacy"><i class="fa-solid fa-users"></i></span>
                     <p class="section-title__tagline">Nuestro equipo</p>
                 </div>
-                <h2 class="section-title__title title-animation">Personal de Grupo Are</h2>
+                <h2 class="section-title__title title-animation split-text">Personal de Grupo Are</h2>
             </div>
 
-            <div class="row g-4 justify-content-center">
+            <div class="row g-4 justify-content-center" data-stagger>
                 @forelse($staff as $member)
                     @php
                         $photo = $member->photo_path
@@ -106,7 +108,7 @@
             <div class="row g-4 align-items-start">
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-brand">
-                        <img src="images/logo.png" alt="Grupo Are" class="footer-logo">
+                        <img src="{{ asset('images/logo.png') }}" alt="Grupo Are" class="footer-logo">
                         <p>
                             Más de 25 años impulsando el sector bufalero con visión moderna,
                             calidad productiva y compromiso sostenible.
@@ -149,6 +151,7 @@
             navmenu.classList.toggle('active');
         });
     </script>
+    <script src="{{ asset('js/animations.js') }}"></script>
 </body>
 
 </html>
