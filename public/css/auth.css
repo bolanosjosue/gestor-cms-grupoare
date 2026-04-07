@@ -126,6 +126,7 @@ label {
     margin-bottom: .42rem;
 }
 
+input[type="text"],
 input[type="email"],
 input[type="password"] {
     font-family: var(--font) !important;
@@ -141,11 +142,13 @@ input[type="password"] {
     transition: border-color .18s, box-shadow .18s, background .18s !important;
 }
 
+input[type="text"]::placeholder,
 input[type="email"]::placeholder,
 input[type="password"]::placeholder {
     color: var(--ink-3) !important;
 }
 
+input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
     border-color: var(--accent) !important;

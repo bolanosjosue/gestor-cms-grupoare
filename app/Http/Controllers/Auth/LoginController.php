@@ -20,7 +20,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'email' => ['required', 'email'],
+            'username' => ['required', 'string'],
             'password' => ['required', 'string'],
         ]);
 
@@ -32,8 +32,8 @@ class LoginController extends Controller
         }
 
         return back()
-            ->withErrors(['email' => 'Credenciales inválidas.'])
-            ->onlyInput('email');
+            ->withErrors(['username' => 'Credenciales inválidas.'])
+            ->onlyInput('username');
     }
 
     public function logout(Request $request)

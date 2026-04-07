@@ -3,7 +3,9 @@
 @section('title', 'Ventas de búfalos')
 
 @section('actions')
+    @if(auth()->user()->tienePermiso('ventas', 'puede_agregar'))
     <a class="btn btn-primary" href="{{ route('admin.sales.create') }}">+ Nueva publicación</a>
+    @endif
 @endsection
 
 @section('content')
@@ -61,12 +63,16 @@
                     <td>₡{{ number_format($sale->price_crc, 0, ',', '.') }}</td>
                     <td>
                         <div class="row" style="flex-wrap:wrap;justify-content:flex-end;">
+                            @if(auth()->user()->tienePermiso('ventas', 'puede_editar'))
                             <a class="btn btn-outline btn-small" href="{{ route('admin.sales.edit', $sale) }}">Editar</a>
+                            @endif
+                            @if(auth()->user()->tienePermiso('ventas', 'puede_eliminar'))
                             <form method="POST" action="{{ route('admin.sales.destroy', $sale) }}" onsubmit="return confirm('¿Eliminar esta publicación?');">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger btn-small" type="submit">Eliminar</button>
                             </form>
+                            @endif
                         </div>
                     </td>
                 </tr>

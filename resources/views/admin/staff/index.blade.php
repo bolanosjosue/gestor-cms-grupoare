@@ -3,7 +3,9 @@
 @section('title', 'Personal')
 
 @section('actions')
+    @if(auth()->user()->tienePermiso('personal', 'puede_agregar'))
     <a class="btn btn-primary" href="{{ route('admin.staff.create') }}">+ Nuevo</a>
+    @endif
 @endsection
 
 @section('content')
@@ -47,12 +49,16 @@
                     </td>
                     <td>
                         <div class="row">
+                            @if(auth()->user()->tienePermiso('personal', 'puede_editar'))
                             <a class="btn btn-outline btn-small" href="{{ route('admin.staff.edit', $m) }}">Editar</a>
+                            @endif
+                            @if(auth()->user()->tienePermiso('personal', 'puede_eliminar'))
                             <form method="POST" action="{{ route('admin.staff.destroy', $m) }}" onsubmit="return confirm('¿Eliminar este miembro?');">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger btn-small" type="submit">Eliminar</button>
                             </form>
+                            @endif
                         </div>
                     </td>
                 </tr>

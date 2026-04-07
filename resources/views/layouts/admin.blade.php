@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>@yield('title', 'Admin') - Grupo Are</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <!-- TinyMCE editor -->
@@ -22,13 +23,13 @@
                 <p class="sb-brand-sub">Panel administrativo</p>
             </div>
 
-            <div class="sb-search">
-                <label for="sidebarNavSearch">Buscar sección</label>
-                <input id="sidebarNavSearch" class="sb-search-input" type="text" placeholder="Dashboard, artículos...">
-            </div>
-
+            @php
+                $u = auth()->user();
+                if ($u) { $u->loadMissing('permisos'); }
+            @endphp
             <nav class="sb-nav" id="sidebarNav">
                 <p class="sb-nav-label">Contenido</p>
+                @if($u && ($u->is_super_admin || $u->tienePermiso('dashboard')))
                 <a href="{{ route('admin.dashboard') }}"
                     class="sb-nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     <span class="sb-nav-icon" aria-hidden="true">
@@ -38,7 +39,9 @@
                     </span>
                     <span>Dashboard</span>
                 </a>
+                @endif
 
+                @if($u && ($u->is_super_admin || $u->tienePermiso('articulos')))
                 <a href="{{ route('admin.articles.index') }}"
                     class="sb-nav-link {{ request()->routeIs('admin.articles.*') ? 'active' : '' }}">
                     <span class="sb-nav-icon" aria-hidden="true">
@@ -49,7 +52,9 @@
                     </span>
                     <span>Artículos</span>
                 </a>
+                @endif
 
+                @if($u && ($u->is_super_admin || $u->tienePermiso('personal')))
                 <a href="{{ route('admin.staff.index') }}"
                     class="sb-nav-link {{ request()->routeIs('admin.staff.*') ? 'active' : '' }}">
                     <span class="sb-nav-icon" aria-hidden="true">
@@ -61,7 +66,9 @@
                     </span>
                     <span>Personal</span>
                 </a>
+                @endif
 
+                @if($u && ($u->is_super_admin || $u->tienePermiso('razas')))
                 <a href="{{ route('admin.breeds.index') }}"
                     class="sb-nav-link {{ request()->routeIs('admin.breeds.*') ? 'active' : '' }}">
                     <span class="sb-nav-icon" aria-hidden="true">
@@ -73,7 +80,9 @@
                     </span>
                     <span>Razas</span>
                 </a>
+                @endif
 
+                @if($u && ($u->is_super_admin || $u->tienePermiso('ventas')))
                 <a href="{{ route('admin.sales.index') }}"
                     class="sb-nav-link {{ request()->routeIs('admin.sales.*') ? 'active' : '' }}">
                     <span class="sb-nav-icon" aria-hidden="true">
@@ -85,6 +94,59 @@
                     </span>
                     <span>Ventas</span>
                 </a>
+                @endif
+
+                @if($u && ($u->is_super_admin || $u->tienePermiso('animales')))
+                <a href="{{ route('admin.animales.index') }}"
+                    class="sb-nav-link {{ request()->routeIs('admin.animales.*') && !request()->routeIs('admin.animales.importacion') && !request()->routeIs('admin.animales.importar') && !request()->routeIs('admin.animales.exportacion') && !request()->routeIs('admin.animales.exportar') ? 'active' : '' }}">
+                    <span class="sb-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M12 3c-4 0-8 3-8 7 0 3 2 5 4 6v2a1 1 0 001 1h6a1 1 0 001-1v-2c2-1 4-3 4-6 0-4-4-7-8-7z"/>
+                            <path d="M9 21h6"/>
+                        </svg>
+                    </span>
+                    <span>Animales</span>
+                </a>
+
+                <a href="{{ route('admin.animales.importacion') }}"
+                    class="sb-nav-link {{ request()->routeIs('admin.animales.importacion') ? 'active' : '' }}">
+                    <span class="sb-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M12 3v12"/>
+                            <path d="M8 11l4 4 4-4"/>
+                            <path d="M4 21h16"/>
+                        </svg>
+                    </span>
+                    <span>Importar</span>
+                </a>
+
+                <a href="{{ route('admin.animales.exportacion') }}"
+                    class="sb-nav-link {{ request()->routeIs('admin.animales.exportacion') ? 'active' : '' }}">
+                    <span class="sb-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M12 21V9"/>
+                            <path d="M8 13l4-4 4 4"/>
+                            <path d="M4 3h16"/>
+                        </svg>
+                    </span>
+                    <span>Exportar</span>
+                </a>
+                @endif
+
+                @if($u && $u->is_super_admin)
+                <p class="sb-nav-label" style="margin-top:.75rem;">Administración</p>
+                <a href="{{ route('admin.usuarios.index') }}"
+                    class="sb-nav-link {{ request()->routeIs('admin.usuarios.*') ? 'active' : '' }}">
+                    <span class="sb-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M12 15c-4 0-7 2-7 4v1h14v-1c0-2-3-4-7-4z"/>
+                            <circle cx="12" cy="8" r="4"/>
+                            <path d="M19 8h2M20 7v2"/>
+                        </svg>
+                    </span>
+                    <span>Usuarios</span>
+                </a>
+                @endif
             </nav>
 
             @auth
@@ -328,6 +390,7 @@
             });
         });
     </script>
+    @stack('scripts')
 </body>
 
 </html>

@@ -3,7 +3,9 @@
 @section('title', 'Artículos')
 
 @section('actions')
+    @if(auth()->user()->tienePermiso('articulos', 'puede_agregar'))
     <a class="btn btn-primary" href="{{ route('admin.articles.create') }}">+ Nuevo</a>
+    @endif
 @endsection
 
 @section('content')
@@ -43,6 +45,7 @@
                     </td>
                     <td>
                         <div class="row" style="flex-wrap:wrap;">
+                            @if(auth()->user()->tienePermiso('articulos', 'puede_editar'))
                             <a class="btn btn-outline btn-small" href="{{ route('admin.articles.edit', $a) }}">Editar</a>
 
                             @if(!$a->isPublished())
@@ -57,12 +60,15 @@
                                     <button class="btn btn-outline btn-small" type="submit">Borrador</button>
                                 </form>
                             @endif
+                            @endif
 
+                            @if(auth()->user()->tienePermiso('articulos', 'puede_eliminar'))
                             <form method="POST" action="{{ route('admin.articles.destroy', $a) }}" onsubmit="return confirm('¿Eliminar este artículo?');">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger btn-small" type="submit">Eliminar</button>
                             </form>
+                            @endif
                         </div>
                     </td>
                 </tr>

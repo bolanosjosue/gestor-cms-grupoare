@@ -14,18 +14,18 @@
     <div class="card">
         <h1>Acceso Admin</h1>
 
-        @if ($errors->has('email'))
-            <div class="alert">{{ $errors->first('email') }}</div>
+        @if ($errors->has('username'))
+            <div class="alert">{{ $errors->first('username') }}</div>
         @endif
 
         <form method="POST" action="{{ route('login.perform') }}">
             @csrf
 
             <div class="group">
-                <label for="email">Email</label>
-                <input id="email" type="email" name="email" value="{{ old('email', 'admin@example.com') }}"
-                    required autofocus>
-                @error('email')
+                <label for="username">Nombre de usuario</label>
+                <input id="username" type="text" name="username" value="{{ old('username') }}"
+                    required autofocus autocomplete="username">
+                @error('username')
                     <div class="field-error">{{ $message }}</div>
                 @enderror
             </div>

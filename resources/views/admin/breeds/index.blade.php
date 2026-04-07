@@ -3,7 +3,9 @@
 @section('title', 'Razas')
 
 @section('actions')
+    @if(auth()->user()->tienePermiso('razas', 'puede_agregar'))
     <button class="btn btn-primary" onclick="openBreedModal()">+ Nueva raza</button>
+    @endif
 @endsection
 
 @section('content')
@@ -23,12 +25,16 @@
                     <td><strong>{{ $breed->name }}</strong></td>
                     <td>
                         <div class="row" style="flex-wrap:wrap;justify-content:flex-end;">
+                            @if(auth()->user()->tienePermiso('razas', 'puede_editar'))
                             <button class="btn btn-outline btn-small" onclick="openBreedModal({{ $breed->id }}, '{{ addslashes($breed->name) }}')">Editar</button>
+                            @endif
+                            @if(auth()->user()->tienePermiso('razas', 'puede_eliminar'))
                             <form method="POST" action="{{ route('admin.breeds.destroy', $breed) }}" onsubmit="return confirm('¿Eliminar esta raza?');">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger btn-small" type="submit">Eliminar</button>
                             </form>
+                            @endif
                         </div>
                     </td>
                 </tr>

@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Article;
 use App\Services\SlugService;
-use App\Services\StaticBlogGenerator;
 use Illuminate\Database\Seeder;
 
 class ArticleSeeder extends Seeder
@@ -48,8 +47,6 @@ HTML;
         $a2->status = 'draft';
         $a2->published_at = null;
         $a2->save();
-
-        app(StaticBlogGenerator::class)->generate($a1, null);
     }
 }
 
