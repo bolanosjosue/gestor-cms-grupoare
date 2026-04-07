@@ -60,7 +60,7 @@ class AnimalImportController extends Controller
         $request->validate([
             'registros' => ['required', 'array', 'min:1'],
             'registros.*.codigo_practico' => ['required', 'string'],
-            'registros.*.identificacion_electronica' => ['required', 'string'],
+            'registros.*.identificacion_electronica' => ['nullable', 'string'],
             'registros.*.agropecuaria' => ['nullable', 'string'],
             'registros.*.estado' => ['nullable', 'string'],
             'registros.*.fecha_nacimiento' => ['nullable', 'date'],
