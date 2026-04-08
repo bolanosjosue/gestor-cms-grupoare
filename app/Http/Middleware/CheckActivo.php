@@ -12,6 +12,10 @@ class CheckActivo
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check() && !Auth::user()->activo) {
+            if ($request->wantsJson() || $request->is('api/*')) {
+                return response()->json(['message' => 'Cuenta desactivada.'], 403);
+            }
+
             Auth::logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();

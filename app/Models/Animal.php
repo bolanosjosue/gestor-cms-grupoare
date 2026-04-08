@@ -44,4 +44,19 @@ class Animal extends Model
             'numero_revisiones' => 'integer',
         ];
     }
+
+    public function pesajes()
+    {
+        return $this->hasMany(Pesaje::class);
+    }
+
+    public function pesajesLeche()
+    {
+        return $this->hasMany(PesajeLeche::class);
+    }
+
+    public function palpaciones()
+    {
+        return $this->hasMany(Palpacion::class);
+    }
 }
