@@ -61,6 +61,13 @@ class AuthController extends Controller
             'is_super_admin' => $user->is_super_admin,
             'activo'         => $user->activo,
             'rol'            => $user->rol,
+            'permisos'       => $user->permisos->map(fn ($p) => [
+                'modulo'          => $p->modulo,
+                'puede_ver'       => $p->puede_ver,
+                'puede_agregar'   => $p->puede_agregar,
+                'puede_editar'    => $p->puede_editar,
+                'puede_eliminar'  => $p->puede_eliminar,
+            ])->values(),
         ]);
     }
 }
