@@ -17,6 +17,7 @@ use App\Http\Controllers\Api\Admin\PermisoController;
 use App\Http\Controllers\Api\Admin\PesajeController;
 use App\Http\Controllers\Api\Admin\PesajeLecheController;
 use App\Http\Controllers\Api\Admin\StaffController;
+use App\Http\Controllers\Api\Admin\SyncController;
 use App\Http\Controllers\Api\PublicArticleController;
 use App\Http\Controllers\Api\PublicStaffController;
 use Illuminate\Support\Facades\Route;
@@ -170,6 +171,12 @@ Route::middleware(['auth:sanctum', 'check_activo'])->group(function () {
 
         // ─── App (módulo empleados) ───
         Route::prefix('app')->group(function () {
+            // Sync: download all animals for offline cache
+            Route::get('sync/animales', [SyncController::class, 'animales']);
+            Route::get('sync/bootstrap', [SyncController::class, 'bootstrap']);
+            Route::get('sync/pull', [SyncController::class, 'pull']);
+            Route::post('sync/push', [SyncController::class, 'push']);
+
             Route::middleware('permiso:app_pesos,puede_ver')->group(function () {
                 Route::get('pesos/agropecuarias', [AppPesoController::class, 'agropecuarias']);
                 Route::get('pesos/buscar', [AppPesoController::class, 'buscar']);
